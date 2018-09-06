@@ -1,38 +1,72 @@
-<h1>Result#index</h1>
-<p>Find me in app/views/result/index.html.erb</p>
+<div class="ff-tabs-wrapper">
+  <input id="ff-tab-1" type="radio" name="ff-tabset-1" checked />
+  <label class="ff-tab-label" for="ff-tab-1">ログ</label>
+  <div class="ff-tab-content">
+    <div id="chart"></div>
+    <script>
+      var chart = c3.generate({
+        bindto: '#chart',
+        data: {
+          columns: [
+            ['<%= @me.name %>', <%= @self_evaluations.pluck(:rate).join(",") %>],
+            ['<%= @partner.name %>', <%= @partner_evaluations.pluck(:rate).join(",") %>]
+          ],
+          type: 'spline',
+          onclick: function (d, element) {
+            var event_id = <%= @self_evaluations.pluck(:event_id, :rate).inspect %>[d.index][0];
+            document.location.href = "/result?event_id=" + event_id;
+          }
+        }
+    });  
+    </script>
 
-<div id="chart"></div>
-<script>
-  var chart = c3.generate({
-    bindto: '#chart',
-    data: {
-      columns: [
-        ['<%= @me.name %>', <%= @self_evaluations.pluck(:rate).join(",") %>],
-        ['<%= @partner.name %>', <%= @partner_evaluations.pluck(:rate).join(",") %>]
-      ],
-      type: 'spline',
-      onclick: function (d, element) {
-        var event_id = <%= @self_evaluations.pluck(:event_id, :rate).inspect %>[d.index][0];
-        document.location.href = "/result?event_id=" + event_id;
-      }
-    }
-});  
-</script>
-
-<% if @event %>
-<div class="ff-card shape-rounded">
-  <h3><%= @event.title %></h3>
-  <p><%= @event.created_at %></p>
-  <img src="<%= @event.image1 %>">
-  <img src="<%= @event.image2 %>">
-  <img src="<%= @event.image3 %>">
-  <div class="me">
-    <h5><%= @me.name %></h5>
-    <p>⭐️ x <%= @event.evaluations.where(user: @me).first.rate %></p>
+    <% if @event %>
+    <div class="ff-card shape-rounded">
+      <h3><%= @event.title %></h3>
+      <p><%= @event.created_at %></p>
+      <ul class="slider">
+        <li><img src="<%= @event.image1 %>"></li>
+        <li><img src="<%= @event.image2 %>"></li>
+        <li><img src="<%= @event.image3 %>"></li>
+      </ul>
+      <div class="me">
+        <h5><%= @me.name %></h5>
+        <p>⭐️ x <%= @event.evaluations.where(user: @me).first.rate %></p>
+        <ul>
+          <% @event.comments.where(writer: @me).each do |comment| %>
+            <li><p><%= comment.content %></p></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="partner">
+        <h5><%= @partner.name %></h5>
+        <p>⭐️ x <%= @event.evaluations.where(user: @partner).first.rate %></p>
+        <ul>
+          <% @event.comments.where(writer: @partner).each do |comment| %>
+            <li><p><%= comment.content %></p></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <% end %>
   </div>
-  <div class="partner">
-    <h5><%= @partner.name %></h5>
-    <p>⭐️ x <%= @event.evaluations.where(user: @partner).first.rate %></p>
+  
+  <input id="ff-tab-2" type="radio" name="ff-tabset-1" />
+  <label class="ff-tab-label" for="ff-tab-2">感じたこと</label>
+  <div class="ff-tab-content">
+    <h3>Good!!!</h3>
+    <% Impression.where(from: @partner, to: @me, status: 1).each do |impression| %>
+      <p><%= impression.content %></p>
+    <% end %>
+    <h3>Bad...</h3>
+    <% Impression.where(from: @partner, to: @me, status: 0).each do |impression| %>
+      <p><%= impression.content %></p>
+    <% end %>
+  </div>
+  
+  <input id="ff-tab-3" type="radio" name="ff-tabset-1" />
+  <label class="ff-tab-label" for="ff-tab-3">次への一歩</label>
+  <div class="ff-tab-content">
+    <p>Tab 03 content</p>
   </div>
 </div>
-<% end %>
