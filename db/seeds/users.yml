@@ -14,7 +14,7 @@
   password: password
   password_confirmation: password
 - id: 4
-  email: kokomi@examaple.com
+  email: kokomi2@examaple.com
   name: ココミ
   password: password
   password_confirmation: password
@@ -24,7 +24,7 @@
   password: password
   password_confirmation: password
 - id: 6
-  email: kokomi@examaple.com
+  email: kokomi3@examaple.com
   name: ココミ
   password: password
   password_confirmation: password
