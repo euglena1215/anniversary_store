@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_151641) do
+ActiveRecord::Schema.define(version: 2018_09_06_151906) do
+
+  create_table "couples", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user1_id", null: false
+    t.bigint "user2_id", null: false
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user1_id"], name: "index_couples_on_user1_id"
+    t.index ["user2_id"], name: "index_couples_on_user2_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,4 +35,6 @@ ActiveRecord::Schema.define(version: 2018_09_06_151641) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "couples", "users", column: "user1_id"
+  add_foreign_key "couples", "users", column: "user2_id"
 end

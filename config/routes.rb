@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'root#index'
 
+  resources :couples
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

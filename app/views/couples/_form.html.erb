@@ -1,0 +1,32 @@
+<%= form_with(model: couple, local: true) do |form| %>
+  <% if couple.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(couple.errors.count, "error") %> prohibited this couple from being saved:</h2>
+
+      <ul>
+      <% couple.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user1_id %>
+    <%= form.number_field :user1_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user2_id %>
+    <%= form.number_field :user2_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ended_at %>
+    <%= form.datetime_select :ended_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
