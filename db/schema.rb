@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_09_06_163205) do
 
-  create_table "anniversaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "anniversaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "couple_id"
     t.string "title"
     t.integer "year"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_163205) do
     t.index ["couple_id"], name: "index_anniversaries_on_couple_id"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.integer "status", null: false
     t.text "content"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_163205) do
     t.index ["writer_id"], name: "index_comments_on_writer_id"
   end
 
-  create_table "couples", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "couples", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user1_id", null: false
     t.bigint "user2_id", null: false
     t.datetime "ended_at"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_163205) do
     t.index ["user2_id"], name: "index_couples_on_user2_id"
   end
 
-  create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "rate"
     t.bigint "event_id"
     t.bigint "user_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_163205) do
     t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "image1"
     t.string "image2"
     t.string "image3"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_163205) do
     t.index ["couple_id"], name: "index_events_on_couple_id"
   end
 
-  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "content"
     t.bigint "from_id", null: false
     t.bigint "to_id", null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_163205) do
     t.index ["to_id"], name: "index_impressions_on_to_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
