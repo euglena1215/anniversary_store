@@ -8,3 +8,23 @@
   name: ココミ
   password: password
   password_confirmation: password
+- id: 3
+  email: kenji@example.com
+  name: ケンジ
+  password: password
+  password_confirmation: password
+- id: 4
+  email: kokomi@examaple.com
+  name: ココミ
+  password: password
+  password_confirmation: password
+- id: 5
+  email: kenzo@example.com
+  name: ケンゾウ
+  password: password
+  password_confirmation: password
+- id: 6
+  email: kokomi@examaple.com
+  name: ココミ
+  password: password
+  password_confirmation: password
