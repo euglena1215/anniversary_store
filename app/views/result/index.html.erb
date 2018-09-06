@@ -1,0 +1,38 @@
+<h1>Result#index</h1>
+<p>Find me in app/views/result/index.html.erb</p>
+
+<div id="chart"></div>
+<script>
+  var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+      columns: [
+        ['<%= @me.name %>', <%= @self_evaluations.pluck(:rate).join(",") %>],
+        ['<%= @partner.name %>', <%= @partner_evaluations.pluck(:rate).join(",") %>]
+      ],
+      type: 'spline',
+      onclick: function (d, element) {
+        var event_id = <%= @self_evaluations.pluck(:event_id, :rate).inspect %>[d.index][0];
+        document.location.href = "/result?event_id=" + event_id;
+      }
+    }
+});  
+</script>
+
+<% if @event %>
+<div class="ff-card shape-rounded">
+  <h3><%= @event.title %></h3>
+  <p><%= @event.created_at %></p>
+  <img src="<%= @event.image1 %>">
+  <img src="<%= @event.image2 %>">
+  <img src="<%= @event.image3 %>">
+  <div class="me">
+    <h5><%= @me.name %></h5>
+    <p>⭐️ x <%= @event.evaluations.where(user: @me).first.rate %></p>
+  </div>
+  <div class="partner">
+    <h5><%= @partner.name %></h5>
+    <p>⭐️ x <%= @event.evaluations.where(user: @partner).first.rate %></p>
+  </div>
+</div>
+<% end %>

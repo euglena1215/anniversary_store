@@ -1,5 +1,6 @@
 class AnniversariesController < ApplicationController
   before_action :set_anniversary, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /anniversaries
   # GET /anniversaries.json

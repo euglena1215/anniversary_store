@@ -1,5 +1,6 @@
 class ImpressionsController < ApplicationController
   before_action :set_impression, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /impressions
   # GET /impressions.json

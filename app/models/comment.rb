@@ -23,4 +23,5 @@
 
 class Comment < ApplicationRecord
   belongs_to :event
+  belongs_to :writer, class_name: User.name, foreign_key: :writer_id
 end

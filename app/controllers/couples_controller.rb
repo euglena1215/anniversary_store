@@ -1,5 +1,6 @@
 class CouplesController < ApplicationController
   before_action :set_couple, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /couples
   # GET /couples.json

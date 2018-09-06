@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :impressions
   resources :anniversaries
+  get '/result', to: 'result#index'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

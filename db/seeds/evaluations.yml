@@ -97,7 +97,7 @@
 - id: 25
   rate: 5
   event_id: 13
-  user_id: 1
+  user_id: 2
 - id: 26
   rate: 5
   event_id: 13
@@ -125,7 +125,7 @@
 - id: 32
   rate: 1
   event_id: 16
-  user_id: 1
+  user_id: 2
 - id: 33
   rate: 3
   event_id: 17

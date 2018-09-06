@@ -24,4 +24,5 @@
 class Event < ApplicationRecord
   belongs_to :couple
   has_many :comments, dependent: :destroy
+  has_many :evaluations, dependent: :destroy
 end
