@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_151906) do
+ActiveRecord::Schema.define(version: 2018_09_06_160937) do
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.integer "status", null: false
+    t.text "content"
+    t.bigint "writer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["writer_id"], name: "index_comments_on_writer_id"
+  end
 
   create_table "couples", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user1_id", null: false
@@ -20,6 +31,17 @@ ActiveRecord::Schema.define(version: 2018_09_06_151906) do
     t.datetime "updated_at", null: false
     t.index ["user1_id"], name: "index_couples_on_user1_id"
     t.index ["user2_id"], name: "index_couples_on_user2_id"
+  end
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
+    t.string "title", null: false
+    t.bigint "couple_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["couple_id"], name: "index_events_on_couple_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -35,6 +57,9 @@ ActiveRecord::Schema.define(version: 2018_09_06_151906) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users", column: "writer_id"
   add_foreign_key "couples", "users", column: "user1_id"
   add_foreign_key "couples", "users", column: "user2_id"
+  add_foreign_key "events", "couples"
 end
