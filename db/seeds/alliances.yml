@@ -1,5 +1,10 @@
 - id: 1
-  logo: http://hogehoge/1.png
-  url: hoegeohoe.com
-  name: ABCDクッキング
-  message: 初回無料
+  logo: https://try-catch.work/alliance/1.jpg
+  url: https://www.abc-cooking.co.jp/
+  name: ABCクッキング
+  message: 500円体験レッスン実施中
+- id: 2
+  logo: https://try-catch.work/alliance/2.png
+  url: https://www.yamashitahideko.com/
+  name: やましたひでこ断捨離塾
+  message: 失敗を恐れず、実践しましょう！
