@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_163008) do
+ActiveRecord::Schema.define(version: 2018_09_06_163205) do
+
+  create_table "anniversaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "couple_id"
+    t.string "title"
+    t.integer "year"
+    t.integer "month"
+    t.integer "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["couple_id"], name: "index_anniversaries_on_couple_id"
+  end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_id", null: false
@@ -78,6 +89,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_163008) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "anniversaries", "couples"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users", column: "writer_id"
   add_foreign_key "couples", "users", column: "user1_id"

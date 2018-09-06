@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :evaluations
   resources :comments
   resources :impressions
+  resources :anniversaries
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
