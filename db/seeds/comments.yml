@@ -2,9 +2,19 @@
   content: 夜景が素敵で彼とロマンチックな雰囲気になれた！
   status: 0
   event_id: 1
-  writer_id: 2
+  writer_id: 1
 - id: 2
   content: 海の風で髪キシキシなったわ
   status: 1
   event_id: 1
+  writer_id: 2
+- id: 3
+  content: レッサーパンダがかわいかった！
+  status: 0
+  event_id: 5
+  writer_id: 1
+- id: 4
+  content: 夏の動物園はキツい
+  status: 1
+  event_id: 5
   writer_id: 2
