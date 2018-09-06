@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @alliance.logo %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @alliance.url %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @alliance.name %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @alliance.message %>
+</p>
+
+<%= link_to 'Edit', edit_alliance_path(@alliance) %> |
+<%= link_to 'Back', alliances_path %>
