@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_160937) do
+ActiveRecord::Schema.define(version: 2018_09_06_163008) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_id", null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2018_09_06_160937) do
     t.index ["user2_id"], name: "index_couples_on_user2_id"
   end
 
+  create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "rate"
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_evaluations_on_event_id"
+    t.index ["user_id"], name: "index_evaluations_on_user_id"
+  end
+
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image1"
     t.string "image2"
@@ -42,6 +52,17 @@ ActiveRecord::Schema.define(version: 2018_09_06_160937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["couple_id"], name: "index_events_on_couple_id"
+  end
+
+  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content"
+    t.bigint "from_id", null: false
+    t.bigint "to_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", null: false
+    t.index ["from_id"], name: "index_impressions_on_from_id"
+    t.index ["to_id"], name: "index_impressions_on_to_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -61,5 +82,9 @@ ActiveRecord::Schema.define(version: 2018_09_06_160937) do
   add_foreign_key "comments", "users", column: "writer_id"
   add_foreign_key "couples", "users", column: "user1_id"
   add_foreign_key "couples", "users", column: "user2_id"
+  add_foreign_key "evaluations", "events"
+  add_foreign_key "evaluations", "users"
   add_foreign_key "events", "couples"
+  add_foreign_key "impressions", "users", column: "from_id"
+  add_foreign_key "impressions", "users", column: "to_id"
 end
