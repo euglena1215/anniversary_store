@@ -1,0 +1,10 @@
+- id: 1
+  email: kenichi@example.com
+  name: ケンイチ
+  password: password
+  password_confirmation: password
+- id: 2
+  email: kokomi@examaple.com
+  name: ココミ
+  password: password
+  password_confirmation: password

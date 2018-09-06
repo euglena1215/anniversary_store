@@ -6,6 +6,7 @@
 #  image1     :string(255)
 #  image2     :string(255)
 #  image3     :string(255)
+#  location   :string(255)
 #  title      :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

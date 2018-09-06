@@ -1,0 +1,15 @@
+- id: 1
+  content: ああああ
+  status: 0
+  from_id: 1
+  to_id: 2
+- id: 2
+  content: ああああああああ
+  status: 1
+  from_id: 1
+  to_id: 2
+- id: 3
+  content: いいいいいいい
+  status: 0
+  from_id: 2
+  to_id: 1

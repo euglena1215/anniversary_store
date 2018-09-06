@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_163205) do
+ActiveRecord::Schema.define(version: 2018_09_06_173943) do
 
   create_table "anniversaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "couple_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_163205) do
     t.bigint "couple_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location"
     t.index ["couple_id"], name: "index_events_on_couple_id"
   end
 
