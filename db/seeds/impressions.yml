@@ -9,12 +9,52 @@
   from_id: 1
   to_id: 2
 - id: 3
-  content: ええやつやん
-  status: 0
+  content: カラオケが上手い
+  status: 1
   from_id: 2
   to_id: 1
 - id: 4
-  content: たのしい
+  content: いつも笑顔
+  status: 0
+  from_id: 2
+  to_id: 1
+- id: 5
+  content: 一緒にいて笑顔になる
+  status: 0
+  from_id: 1
+  to_id: 2
+- id: 6
+  content: ずっと幸せを感じれる
+  status: 1
+  from_id: 1
+  to_id: 2
+- id: 7
+  content: おしゃれ
+  status: 1
+  from_id: 2
+  to_id: 1
+- id: 8
+  content: 料理が下手
+  status: 0
+  from_id: 2
+  to_id: 1
+- id: 9
+  content: 一緒にいて笑顔になる
+  status: 0
+  from_id: 1
+  to_id: 2
+- id: 10
+  content: ずっと幸せを感じれる
+  status: 1
+  from_id: 1
+  to_id: 2
+- id: 11
+  content: 部屋が散らかっている
+  status: 0
+  from_id: 2
+  to_id: 1
+- id: 12
+  content: 怒りっぽい
   status: 0
   from_id: 2
   to_id: 1
