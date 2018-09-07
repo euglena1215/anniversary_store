@@ -67,6 +67,15 @@
   <input id="ff-tab-3" type="radio" name="ff-tabset-1" />
   <label class="ff-tab-label" for="ff-tab-3">次への一歩</label>
   <div class="ff-tab-content">
-    <p>Tab 03 content</p>
+    <% @alliances.zip(@suggest_messages).each do |alliance, suggest_message| %>
+      <h4><%= suggest_message %>あなたへ...</h4>
+      <a href="<%= alliance.url %>">
+        <div class="ff-card shape-rounded">
+          <img src="<%= alliance.logo %>">
+          <h4><%= alliance.name %></h4>
+          <p><%= alliance.message %></p>
+        </div>
+      </a>
+    <% end %>
   </div>
 </div>

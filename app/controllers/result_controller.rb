@@ -11,5 +11,8 @@ class ResultController < ApplicationController
     @partner_evaluations = Evaluation.where(user: @partner)
 
     @event = Event.find_by(id: params[:event_id])
+
+    @alliances = Alliance.all
+    @suggest_messages = ["料理下手な", "物を捨てられない"]
   end
 end
